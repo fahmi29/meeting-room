@@ -21,7 +21,8 @@
         <?php if(session()->getFlashdata('msg')):?>
                     <div class="alert alert-danger"><?= session()->getFlashdata('msg') ?></div>
                 <?php endif;?>
-          <form action="/login/auth" method="POST">
+          <form action="<?= base_url();?>/login/auth" method="POST">
+            <?= csrf_field(); ?>
             <!-- Email input -->
             <div class="mb-6">
               <input type="text" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Email address" />
