@@ -1,10 +1,7 @@
 # CodeIgniter 4 Application Starter
 
-## First Of All please do this after you pull this repository
-
-### 1. make sure you have already install node.js on your computer
-### 2. type in your command line or terminal wih `composer update --no-dev`, type this `npm init -y`, this `npm install laravel-mix --save-dev` and this `npx mix` (for compile project and if you suffer after do some change with tailwindcss don't forget type `npx mix` in ypur terminal)
-### 3. after do anything in folder view dont forget to type in your CLI `npx mix`
+## Layouting pada repository ini
+> ```  untuk mengubah layout di simpan pada folder layout jadi jangan lupa extends file layout pada page yang akan di tambahkan dan apabila ingin menambah script css atau javascript tambahkan pada file yang terdapat di dalam folder layout ```
 
 ## What is CodeIgniter?
 
