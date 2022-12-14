@@ -6,8 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <!-- <link rel="stylesheet" href="/public/css/app.css"> -->
-  <link rel="stylesheet" href="./css/app.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -18,10 +17,10 @@
           <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="w-full" alt="Phone image" />
         </div>
         <div class="md:w-8/12 lg:w-5/12 lg:ml-20">
-        <?php if(session()->getFlashdata('msg')):?>
-                    <div class="alert alert-danger"><?= session()->getFlashdata('msg') ?></div>
-                <?php endif;?>
-          <form action="<?= base_url();?>/login/auth" method="POST">
+          <?php if (session()->getFlashdata('msg')) : ?>
+            <div class="alert alert-danger"><?= session()->getFlashdata('msg') ?></div>
+          <?php endif; ?>
+          <form action="<?= base_url(); ?>/login/auth" method="POST">
             <?= csrf_field(); ?>
             <!-- Email input -->
             <div class="mb-6">
