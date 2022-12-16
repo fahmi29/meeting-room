@@ -22,7 +22,7 @@
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown link
+              <img src="<?=base_url('assets/images/test.jpg')?>" class="rounded-circle shadow-4-strong" style="width: 3rem;" />
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Action</a></li>
@@ -35,7 +35,7 @@
     </div>
   </nav>
 
-  <div class="container-flux">
+  <div class="container-fluid">
     <?= $this->renderSection('content'); ?>
   </div>
 
