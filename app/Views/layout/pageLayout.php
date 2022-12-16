@@ -22,7 +22,7 @@
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="<?=base_url('assets/images/test.jpg')?>" class="rounded-circle shadow-4-strong" style="width: 3rem;" />
+              <img src="<?= base_url('assets/images/test.jpg') ?>" class="rounded-circle shadow-4-strong" style="width: 3rem;" />
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Action</a></li>
@@ -39,8 +39,8 @@
     <?= $this->renderSection('content'); ?>
   </div>
 
-  <script src="https://cdn.tailwindcss.com"></script>
   <script src="<?= base_url('js/jquery.min.js') ?>"></script>
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   <script src="<?= base_url('js/bootstrap.bundle.min.js') ?>"></script>
 </body>
 
