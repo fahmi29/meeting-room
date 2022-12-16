@@ -20,10 +20,30 @@
     background-color: #FBEBE8;
 }
 
+.bg-orange {
+    background-color: #EA6242;
+}
+
 .card {
     border: none;
 }
 
 .c-grey {
     color: #CBC5C5;
+}
+
+.btn-rounded{
+    border-radius: 2rem;
+}
+
+.left-l{
+    padding-left: 8rem;
+}
+
+.left-m{
+    margin-left: 6rem;
+}
+
+.rounded-image{
+    border-radius: 3.375rem;
 }

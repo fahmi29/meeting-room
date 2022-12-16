@@ -53,8 +53,20 @@
 	<div class="col-md-6 pt-4">
 		<div class="card b-orange mb-4 ml-6">
 			<div class="card-body">
-				<img src="<?= base_url('assets/images/room1.png') ?>" class="rounded mx-auto d-block" />
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam perferendis commodi tenetur quos ducimus repellat nulla, nam magni. Commodi iusto ad harum voluptas exercitationem facere eos earum laboriosam excepturi quas?</p>
+				<img src="<?= base_url('assets/images/room1.png') ?>" class="rounded-image mx-auto d-block" />
+				<div class="row justify-content-center">
+					<div class="col-6 ">
+						<div class="col-12">
+							<h3 class="h3 left-l">Platinum</h3>
+						</div>
+						<div class="col-12">
+							<p class="h6 left-l">Capacity 10 people</p>
+						</div>
+					</div>
+					<div class="col-6 pt-3">
+						<button class="btn-rounded btn btn-lg bg-orange text-white left-m">Check Availability</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
