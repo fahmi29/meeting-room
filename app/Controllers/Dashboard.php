@@ -9,4 +9,9 @@ class Dashboard extends Controller
         echo view('dashboard');
         // echo view('layout/pageLayout');
     }
+
+    public function detail()
+    {
+        echo view('detail');
+    }
 }

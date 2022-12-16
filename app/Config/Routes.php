@@ -38,6 +38,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->post('/login/auth', 'Login::auth');
 $routes->get('/dashboard', 'Dashboard::index'); //, ['filter' => 'auth']);
+$routes->get('/detail', 'Dashboard::detail'); // mungkin tambah :id nanti
 
 /*
  * --------------------------------------------------------------------

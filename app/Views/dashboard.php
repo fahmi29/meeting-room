@@ -64,7 +64,7 @@
 						</div>
 					</div>
 					<div class="col-6 pt-3">
-						<button class="btn-rounded btn btn-lg bg-orange text-white left-m">Check Availability</button>
+						<a href="<?= base_url('/detail')?>" class="btn-rounded btn btn-lg bg-orange text-white left-m">Check Availability</a>
 					</div>
 				</div>
 			</div>
