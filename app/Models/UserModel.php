@@ -1,6 +1,6 @@
 <?php 
 namespace App\Models;
-use Codeigniter\Model;
+use CodeIgniter\Model;
 
 class UserModel extends Model{
     protected $table = '?';
