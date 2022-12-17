@@ -37,7 +37,12 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->post('/login/auth', 'Login::auth');
-$routes->get('/dashboard', 'Dashboard::index'); //, ['filter' => 'auth']);
+
+// admin routes
+$routes->get('/admin/dashboard', 'Admin::index'); //, ['filter' => 'auth']); => kalau sudah konek ke db
+
+// user routes
+$routes->get('/dashboard', 'Dashboard::index'); //, ['filter' => 'auth']); => kalau sudah konek ke db
 $routes->get('/detail', 'Dashboard::detail'); // mungkin tambah :id nanti
 
 /*

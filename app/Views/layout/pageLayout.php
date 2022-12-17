@@ -42,6 +42,7 @@
   <script src="<?= base_url('js/jquery.min.js') ?>"></script>
   <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   <script src="<?= base_url('js/bootstrap.bundle.min.js') ?>"></script>
+  <?= $this->renderSection('javascript'); ?>
 </body>
 
 </html>
