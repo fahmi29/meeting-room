@@ -14,7 +14,7 @@ class Admin extends Controller
         echo view('admin/user');
     }
 
-    public function adduser()
+    public function useradd()
     {
         echo view('admin/user-add');
     }
@@ -24,7 +24,7 @@ class Admin extends Controller
         echo view('admin/room');
     }
 
-    public function addroom()
+    public function roomadd()
     {
         echo view('admin/room-add');
     }

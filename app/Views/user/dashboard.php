@@ -16,7 +16,7 @@
 			</ul>
 			<div class="tab-content" id="pills-tabContent">
 				<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-					<div class="card b-orange mb-4">
+					<div class="card b-orange mb-4 radius radius">
 						<div class="card-body">
 							<div class="card-title orange h5">Platinum Room Meeting</div>
 							<div class="card-text c-grey pb-4">Mahalini Raharja</div>
@@ -24,7 +24,7 @@
 						</div>
 					</div>
 
-					<div class="card b-orange mb-4">
+					<div class="card b-orange mb-4 radius">
 						<div class="card-body">
 							<div class="card-title orange h5">Executive Space</div>
 							<div class="card-text c-grey pb-4">Mahalini Raharja</div>
@@ -32,7 +32,7 @@
 						</div>
 					</div>
 
-					<div class="card b-orange mb-4">
+					<div class="card b-orange mb-4 radius">
 						<div class="card-body">
 							<div class="card-title orange h5">Gloriya Room</div>
 							<div class="card-text c-grey pb-4">Mahalini Raharja</div>
@@ -40,7 +40,7 @@
 					</div>
 				</div>
 				<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
-					<div class="card b-orange mb-4">
+					<div class="card b-orange mb-4 radius">
 						<div class="card-body">
 							<div class="card-title orange h5">Gloriya Room</div>
 							<div class="card-text c-grey pb-4">Mahalini Raharja</div>
@@ -51,7 +51,7 @@
 		</div>
 	</div>
 	<div class="col-md-6 pt-4">
-		<div class="card b-orange mb-4 ml-6">
+		<div class="card b-orange mb-4 radius ml-6">
 			<div class="card-body">
 				<img src="<?= base_url('assets/images/room1.png') ?>" class="rounded-image mx-auto d-block" />
 				<div class="row justify-content-center">
@@ -64,7 +64,7 @@
 						</div>
 					</div>
 					<div class="col-6 pt-3">
-						<a href="<?= base_url('/detail')?>" class="btn-rounded btn btn-lg bg-orange text-white left-m">Check Availability</a>
+						<a href="<?= base_url('/user/detail')?>" class="btn-rounded btn btn-lg bg-orange text-white left-m">Check Availability</a>
 					</div>
 				</div>
 			</div>

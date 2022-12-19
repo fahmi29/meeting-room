@@ -20,7 +20,7 @@
             <h1 class="h1">Availabillity</h1>
             <div class="row">
                 <div class="col-12 mb-4">
-                    <div class="card">
+                    <div class="card radius">
                         <div class="card-body row">
                             <div class="col-4 d-flex justify-content-center">
                                 <span class="c-grey">Date</span>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="col-12 mb-23">
-                    <div class="card">
+                    <div class="card radius">
                         te nyaho iye isi naon :v
                     </div>
                 </div>

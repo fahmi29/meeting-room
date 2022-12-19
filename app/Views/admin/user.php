@@ -3,11 +3,11 @@
 <?= $this->section('content') ?>
 <div class="row pt-4">
     <div class="col-md-12">
-        <div class="card b-orange mb-4 ml-6">
+        <div class="card b-orange mb-4 ml-6 radius">
             <div class="card-body">
                 <div class="card bg-white p-4">
                     <p class="h4 txt-black">Master User</p>
-                    <button type="button" class="btn btn-light bg-orange width-15">New Employee</button>
+                    <a href="<?= base_url('/admin/add-user')?>" class="btn btn-light bg-orange width-15">New Employee</a>
                     <table id="datauser" class="table table-striped table-bordered nowrap" style="width:100%">
                         <thead>
                             <tr>

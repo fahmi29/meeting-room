@@ -3,9 +3,9 @@
 <?= $this->section('content') ?>
 <div class="row pt-4">
     <div class="col-md-12">
-        <div class="card b-orange mb-4 ml-6">
+        <div class="card b-orange mb-4 ml-6 radius">
             <div class="card-body">
-                <div class="card bg-white p-4">
+                <div class="card bg-white p-4 radius">
                     <form class="row g-3">
                         <div class="col-auto">
                             <label for="staticEmail2" class="visually-hidden">Date From</label>
