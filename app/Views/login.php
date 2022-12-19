@@ -18,7 +18,7 @@
         </div>
         <div class="md:w-8/12 lg:w-5/12 lg:ml-20">
           <?php if (session()->getFlashdata('msg')) : ?>
-            <div class="alert alert-danger"><?= session()->getFlashdata('msg') ?></div>
+            <div class="alert alert-danger" role="alert"><?= session()->getFlashdata('msg') ?></div>
           <?php endif; ?>
           <form action="<?= base_url(); ?>/login/auth" method="POST">
             <?= csrf_field(); ?>

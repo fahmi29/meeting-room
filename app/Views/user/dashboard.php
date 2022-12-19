@@ -1,7 +1,7 @@
 <?= $this->extend('layout/pageLayout') ?>
 
 <?= $this->section('content') ?>
-<div class="row ml-12">
+<div class="row offset-md-1">
 	<div class="col-md-5 pt-4">
 		<div class="card-body pl-6">
 			<h2 class="h2"><?= date('M d') . ', ' . date('l'); ?></h2>

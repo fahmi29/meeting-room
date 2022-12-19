@@ -32,22 +32,51 @@
     color: #CBC5C5;
 }
 
-.btn-rounded{
+.btn-rounded {
     border-radius: 2rem;
 }
 
-.left-l{
+.left-l {
     padding-left: 8rem;
 }
 
-.left-m{
+.left-m {
     margin-left: 6rem;
 }
 
-.rounded-image{
+.rounded-image {
     border-radius: 3.375rem;
 }
 
-.mb-23{
+.mb-23 {
     margin-bottom: 23rem;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: #fff;
+}
+
+.bg-white {
+    background-color: #ffffff;
+}
+
+.txt-black {
+    color: #000000;
+}
+
+.pull-left {
+    float: left !important;
+}
+
+.width-15{
+    width: 15%;
+    color: #ffffff;
+}
+
+.no-border{
+    border: none;
+}
+
+.border-orange{
+    border-color: #EA6242;
 }

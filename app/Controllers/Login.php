@@ -1,11 +1,13 @@
-<?php 
+<?php
+
 namespace App\Controllers;
+
 use CodeIgniter\Controller;
 // use App\Models\UserModel;
 
-class Login extends Controller 
+class Login extends Controller
 {
-    
+
     public function index()
     {
         helper(['form']);
@@ -28,7 +30,7 @@ class Login extends Controller
             ];
             $session->set($ses_data);
             return redirect()->to('/admin/dashboard');
-        }else {
+        } else if($username === 'user') {
             $ses_data = [
                 'usernmae' => 'user',
                 'name' => 'user tes',
@@ -36,34 +38,37 @@ class Login extends Controller
                 'logged_in' => true
             ];
             $session->set($ses_data);
-            return redirect()->to('/dashboard');
+            return redirect()->to('/user/dashboard');
+        }else{
+            $session->setFlashdata('msg', 'Lah salah wa');
+            return redirect()->to('/');
         }
         // if ($data) {
         //     $pass = $data['password'];
         //     $verify = password_verify($password, $pass);
         //     if ($verify) {
-            // if ($data['role'] === 'admin') {
-                //         $ses_data = [
-                //             'usernmae' => $data['username'],
-                //             'password' => $data['password'],
-                //             'name' => $data['name'],
-                //             'logged_in' => true
-                //         ];
-                //         $session->set($ses_data);
-                //         return redirect()->to('/admin/dashboard');
-            // }else {
-                //         $ses_data = [
-                //             'usernmae' => $data['username'],
-                //             'password' => $data['password'],
-                //             'name' => $data['name'],
-                //             'logged_in' => true
-                //         ];
-                //         $session->set($ses_data);
-                //         return redirect()->to('/dashboard');
-            // }
+        // if ($data['role'] === 'admin') {
+        //         $ses_data = [
+        //             'usernmae' => $data['username'],
+        //             'password' => $data['password'],
+        //             'name' => $data['name'],
+        //             'logged_in' => true
+        //         ];
+        //         $session->set($ses_data);
+        //         return redirect()->to('/admin/dashboard');
+        // }else {
+        //         $ses_data = [
+        //             'usernmae' => $data['username'],
+        //             'password' => $data['password'],
+        //             'name' => $data['name'],
+        //             'logged_in' => true
+        //         ];
+        //         $session->set($ses_data);
+        //         return redirect()->to('/dashboard');
+        // }
         //     }else{
         //         $session->setFlashdata('msg', 'Lah salah wa');
-        //         return redirect()->to('/login');
+        //         return redirect()->to('/');
         //     }
         // }
     }
@@ -72,7 +77,6 @@ class Login extends Controller
     {
         $session = session();
         $session->destroy();
-        return redirect()->to('/login');
+        return redirect()->to('/');
     }
-
 }

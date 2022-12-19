@@ -37,13 +37,18 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->post('/login/auth', 'Login::auth');
+$routes->get('/logout', 'Login::logout');
 
 // admin routes
 $routes->get('/admin/dashboard', 'Admin::index'); //, ['filter' => 'auth']); => kalau sudah konek ke db
+$routes->get('/admin/user-management', 'Admin::user');
+$routes->get('/admin/add-user', 'Admin::useradd');
+$routes->get('/admin/room-management', 'Admin::room');
+$routes->get('/admin/add-room', 'Admin::roomadd');
 
 // user routes
-$routes->get('/dashboard', 'Dashboard::index'); //, ['filter' => 'auth']); => kalau sudah konek ke db
-$routes->get('/detail', 'Dashboard::detail'); // mungkin tambah :id nanti
+$routes->get('/user/dashboard', 'Dashboard::index'); //, ['filter' => 'auth']); => kalau sudah konek ke db
+$routes->get('/user/detail', 'Dashboard::detail'); // mungkin tambah :id nanti
 
 /*
  * --------------------------------------------------------------------
