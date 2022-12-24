@@ -11,8 +11,8 @@ class Login extends Controller
     public function index()
     {
         helper(['form']);
-        $model = new UserModel();
-        echo view('login', $model);
+        // $model = new UserModel();
+        echo view('login');
     }
 
     public function auth()

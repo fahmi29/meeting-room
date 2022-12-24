@@ -22,9 +22,7 @@
           <?php endif; ?>
           <form action="<?= base_url(); ?>/login/auth" method="POST">
             <?= csrf_field(); ?>
-            <?php foreach($model as $i){
-                  print_r($i->username);
-            } ?>
+            
 
             <!-- Email input -->
             <div class="mb-6">
