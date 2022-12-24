@@ -22,38 +22,38 @@ class Login extends Controller
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
         $data = $model->where('username', $username)->first();
-        print_r($data);
-        
+        // print_r($data);
+
         if ($data) {
             $pass = $data['password'];
             $verify = password_verify($password, $pass);
-            if ($verify) {
+            if ($pass === $password) {
                 if ($data['role'] === 'admin') {
-                        $ses_data = [
-                            'id_user' => $data['id_user'],
-                            'usernmae' => $data['username'],
-                            'password' => $data['password'],
-                            'name' => $data['name'],
-                            'logged_in' => true
-                        ];
-                        $session->set($ses_data);
-                        return redirect()->to('/admin/dashboard');
-                }else {
-                        $ses_data = [
-                            'id_user' => $data['id_user'],
-                            'usernmae' => $data['username'],
-                            'password' => $data['password'],
-                            'name' => $data['name'],
-                            'logged_in' => true
-                        ];
-                        $session->set($ses_data);
-                        return redirect()->to('/dashboard');
+                    $ses_data = [
+                        'id_user' => $data['id_user'],
+                        'usernmae' => $data['username'],
+                        'password' => $data['password'],
+                        'name' => $data['nama_lengkap'],
+                        'logged_in' => true
+                    ];
+                    $session->set($ses_data);
+                    return redirect()->to('/admin/dashboard');
+                } else {
+                    $ses_data = [
+                        'id_user' => $data['id_user'],
+                        'usernmae' => $data['username'],
+                        'password' => $data['password'],
+                        'name' => $data['nama_lengkap'],
+                        'logged_in' => true
+                    ];
+                    $session->set($ses_data);
+                    return redirect()->to('/dashboard');
                 }
-            }else{
+            } else {
                 $session->setFlashdata('msg', 'Lah salah wa');
                 return redirect()->to('/');
             }
-        }else{
+        } else {
             $session->setFlashdata('msg', 'User not found!');
             return redirect()->to('/');
         }
