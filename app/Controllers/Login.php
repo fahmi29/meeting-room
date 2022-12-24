@@ -49,6 +49,7 @@ class Login extends Controller
         //     if ($verify) {
         // if ($data['role'] === 'admin') {
         //         $ses_data = [
+        //                 'id_user' => $data['id_user']
         //             'usernmae' => $data['username'],
         //             'password' => $data['password'],
         //             'name' => $data['name'],
@@ -58,6 +59,7 @@ class Login extends Controller
         //         return redirect()->to('/admin/dashboard');
         // }else {
         //         $ses_data = [
+        //                 'id_user' => $data['id_user']
         //             'usernmae' => $data['username'],
         //             'password' => $data['password'],
         //             'name' => $data['name'],
