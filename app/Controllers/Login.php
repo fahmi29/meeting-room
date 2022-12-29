@@ -34,20 +34,22 @@ class Login extends Controller
                         'usernmae' => $data['username'],
                         'password' => $data['password'],
                         'name' => $data['nama_lengkap'],
+                        'role' => $data['role'],
                         'logged_in' => true
                     ];
                     $session->set($ses_data);
-                    return redirect()->to('/admin/dashboard');
+                    return redirect()->to('/dashboard');
                 } else {
                     $ses_data = [
                         'id_user' => $data['id_user'],
                         'usernmae' => $data['username'],
                         'password' => $data['password'],
                         'name' => $data['nama_lengkap'],
+                        'role' => $data['role'],
                         'logged_in' => true
                     ];
                     $session->set($ses_data);
-                    return redirect()->to('/dashboard');
+                    return redirect()->to('/user/dashboard');
                 }
             } else {
                 $session->setFlashdata('msg', 'Lah salah wa');

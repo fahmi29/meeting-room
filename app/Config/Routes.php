@@ -40,11 +40,15 @@ $routes->post('/login/auth', 'Login::auth');
 $routes->get('/logout', 'Login::logout');
 
 // admin routes
-$routes->get('/admin/dashboard', 'Admin::index'); //, ['filter' => 'auth']); => kalau sudah konek ke db
-$routes->get('/admin/user-management', 'Admin::user');
-$routes->get('/admin/add-user', 'Admin::useradd');
-$routes->get('/admin/room-management', 'Admin::room');
-$routes->get('/admin/add-room', 'Admin::roomadd');
+// $routes->group('admin', function($routes)
+// {
+    $routes->get('/admin/dashboard', 'Admin::index'); //, ['filter' => 'auth']); => kalau sudah konek ke db
+    $routes->get('/admin/user-management', 'Admin::user');
+    $routes->get('/admin/add-user', 'Admin::useradd');
+    $routes->add('/admin/store', 'Admin::createuser');
+    $routes->get('/admin/room-management', 'Admin::room');
+    $routes->get('/admin/add-room', 'Admin::roomadd');
+// });
 
 // user routes
 $routes->get('/user/dashboard', 'Dashboard::index'); //, ['filter' => 'auth']); => kalau sudah konek ke db

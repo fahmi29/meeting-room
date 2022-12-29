@@ -2,7 +2,7 @@
 
 <?= $this->section('content') ?>
 <div class="row ml-12 mt-4">
-    <form class="row align-items-start">
+    <form class="row align-items-start" action="<?= base_url()?>/admin/useradd">
         <div class="col-md-4">
             <div class="card b-orange">
                 <div class="card-body">
