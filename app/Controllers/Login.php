@@ -33,18 +33,18 @@ class Login extends Controller
                         'id_user' => $data['id_user'],
                         'usernmae' => $data['username'],
                         'password' => $data['password'],
-                        'name' => $data['nama_lengkap'],
+                        'name' => $data['namalengkap'],
                         'role' => $data['role'],
                         'logged_in' => true
                     ];
                     $session->set($ses_data);
-                    return redirect()->to('/dashboard');
+                    return redirect()->to('/admin/dashboard');
                 } else {
                     $ses_data = [
                         'id_user' => $data['id_user'],
                         'usernmae' => $data['username'],
                         'password' => $data['password'],
-                        'name' => $data['nama_lengkap'],
+                        'name' => $data['namalengkap'],
                         'role' => $data['role'],
                         'logged_in' => true
                     ];

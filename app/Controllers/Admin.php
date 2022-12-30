@@ -32,7 +32,9 @@ class Admin extends Controller
 
     public function user()
     {
-        return view('admin/user');
+        $user = new UserModel();
+        $data['users'] = $user->findAll();
+        return view('admin/user', $data);
     }
 
     public function useradd()
