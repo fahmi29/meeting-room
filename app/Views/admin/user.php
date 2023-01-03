@@ -8,6 +8,11 @@
                 <div class="card bg-white p-4">
                     <p class="h4 txt-black">Master User</p>
                     <a href="<?= base_url('/admin/add-user')?>" class="btn btn-light bg-orange width-15">New Employee</a>
+                    <?php if (session()->getFlashdata('msg')): ?>
+                        <div class="alert alert-success" role="alert">
+                            <?= session()->getFlashdata('msg') ?>
+                        </div>
+                    <?php endif; ?>
                     <table id="datauser" class="table table-striped table-bordered nowrap" style="width:100%">
                         <thead>
                             <tr>

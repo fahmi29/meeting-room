@@ -76,8 +76,8 @@ class Admin extends Controller
         ];
         // dd($data);
         $user->insert($data);
-        session()->setFlashdata('msg', 'berhasil tambah ruangan');
-        return $this->response->redirect(site_url('/admin/add-user'));
+        session()->setFlashdata('msg', 'berhasil tambah user');
+        return $this->response->redirect(site_url('/admin/dashboard'));
         // }
         // $this->request->getVar();
     }
