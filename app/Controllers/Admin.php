@@ -41,8 +41,9 @@ class Admin extends Controller
     {
         $divisi = new DivisiModel();
         $jabatan = new JabatanModel();
-        $data['divisi'] = $divisi->findAll();
-        $data['jabatan'] = $jabatan->findAll();
+        $id = [1];
+        $data['divisi'] = $divisi->whereNotIn('id_divisi', $id)->findAll();
+        $data['jabatan'] = $jabatan->whereNotIn('id_jabatan', $id)->findAll();
         // dd($data['divisi']);
         echo view('admin/user-add', $data);
     }
@@ -52,32 +53,49 @@ class Admin extends Controller
         // dd($this->request->getVar());
         // helper(['form', 'url']);
         // validasi data user
-        // $validation = Services::validation();
-        // $validation->setRule(['nama_lengkap' => 'required']); // rule validation ya mirip" di laravel lah
+        $validation = Services::validation();
+        // rule validation ya mirip" di laravel lah
+        // $validation->setRules(['namalengkap' => 'required']);
+        // $validation->setRules(['email' => 'required']);
+        // $validation->setRules(['username' => 'required']);
+        // $validation->setRules(['password' => 'required']);
+        // $validation->setRules(['jabatan' => 'required']);
+        // $validation->setRules(['divisi' => 'required']);
+        $rules = [
+            'namalengkap' => 'required',
+            'email' => 'required|valid_email',
+            'username' => 'required',
+            'password' => 'required',
+            'jabatan' => 'required',
+            'divisi' => 'required'
+        ];
         // $isvalidate = $validation->withRequest($this->request)->run();
 
         // jika validasi return true / validasi benar / validasi lolos dll
-        // if (!$isvalidate) {
-        //     return view('admin/user-add', [
-        //         'validation' => $this->validator
-        //     ]);
-        // } else {
-        $user = new UserModel();
-        $jabatan = (int)$this->request->getVar('jabatan');
-        $divisi = (int)$this->request->getVar('divisi');
-        $data = [
-            'namalengkap' => $this->request->getVar('namalengkap'),
-            'email' => $this->request->getVar('email'),
-            'username' => $this->request->getVar('username'),
-            'password' => $this->request->getVar('password'),
-            'jabatan' => $jabatan,
-            'divisi' => $divisi,
-            'role' => 'user'
-        ];
-        // dd($data);
-        $user->insert($data);
-        session()->setFlashdata('msg', 'berhasil tambah user');
-        return $this->response->redirect(site_url('/admin/dashboard'));
+        if ($this->validate($rules)) {
+            $user = new UserModel();
+            $jabatan = (int)$this->request->getVar('jabatan');
+            $divisi = (int)$this->request->getVar('divisi');
+            $data = [
+                'namalengkap' => $this->request->getVar('namalengkap'),
+                'email' => $this->request->getVar('email'),
+                'username' => $this->request->getVar('username'),
+                'password' => $this->request->getVar('password'),
+                'jabatan' => $jabatan,
+                'divisi' => $divisi,
+                'role' => 'user'
+            ];
+            // dd($data);
+            $user->insert($data);
+            $datas['validation'] = $this->validator;
+            return view('admin/user', $datas);
+            // return view('admin/user-add', [
+            //     'validation' => $this->validator
+            // ]);
+        } else {
+            $data['validation'] = $this->validator;
+            return view('admin/user-add', $data);
+        }
         // }
         // $this->request->getVar();
     }
@@ -85,7 +103,7 @@ class Admin extends Controller
     public function room()
     {
         $ruang = new RuangModel();
-        $data['ruangan'] = $ruang->findAll();
+        $data['room'] = $ruang->findAll();
         // dd($data);
         return view('admin/room', $data);
     }
@@ -93,5 +111,47 @@ class Admin extends Controller
     public function roomadd()
     {
         return view('admin/room-add');
+    }
+
+    public function roomedit($id)
+    {
+        $ruang = new RuangModel();
+
+        $data = array(
+            'room' => $ruang->find($id)
+        );
+
+        return view('admin/room-add', $data);
+    }
+
+    public function updateroom($id)
+    {
+        // dd($this->request->getVar());
+        helper(['form', 'url']);
+        $ruang = new RuangModel();
+        $data['room'] = $ruang->where('id_ruangan', $id)->first();
+        // $validation = Services::validation();
+        // $data['ruangan'] = $ruang->findAll();
+
+        $rules = [
+            'namaruang' => 'required',
+            'kapasitas' => 'required',
+            'fasilitas' => 'required',
+            // 'gambar' => 'required'
+        ];
+
+        if ($this->validate($rules)) {
+            $ruang->update($id, [
+                    'namaruang' => $this->request->getVar('namaruang'),
+                    'kapasitas' => $this->request->getVar('kapasitas'),
+                    'fasilitas' => $this->request->getVar('fasilitas')
+                    // 'gambar' => $this->request->getVar('gambar')
+            ]);
+            $data['room'] = $ruang->findAll();
+            return view('admin/room', $data);
+        }else{
+            $data['validation'] = $this->validator;
+            return view('admin/room-add', $data);
+        }
     }
 }

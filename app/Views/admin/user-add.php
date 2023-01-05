@@ -2,6 +2,11 @@
 
 <?= $this->section('content') ?>
 <div class="row ml-12 mt-4">
+    <?php if (isset($validation)): ?>
+        <div class="alert alert-danger" role="alert">
+            <?= $validation->listErrors() ?>
+        </div>
+    <?php endif; ?>
     <form class="row align-items-start" action="<?= base_url('/admin/store') ?>" method="POST">
         <?= csrf_field(); ?>
         <div class="col-md-4">
