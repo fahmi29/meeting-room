@@ -87,7 +87,11 @@ class Admin extends Controller
             ];
             // dd($data);
             $user->insert($data);
+            $user = new UserModel();
+            $datas['users'] = $user->findAll();
             $datas['validation'] = $this->validator;
+            //flash message
+            session()->setFlashdata('msg', 'User Berhasil Disimpan');
             return view('admin/user', $datas);
             // return view('admin/user-add', [
             //     'validation' => $this->validator
@@ -140,18 +144,20 @@ class Admin extends Controller
             // 'gambar' => 'required'
         ];
 
-        if ($this->validate($rules)) {
-            $ruang->update($id, [
-                    'namaruang' => $this->request->getVar('namaruang'),
-                    'kapasitas' => $this->request->getVar('kapasitas'),
-                    'fasilitas' => $this->request->getVar('fasilitas')
-                    // 'gambar' => $this->request->getVar('gambar')
-            ]);
-            $data['room'] = $ruang->findAll();
-            return view('admin/room', $data);
-        }else{
+        if (!$this->validate($rules)) {
             $data['validation'] = $this->validator;
             return view('admin/room-add', $data);
+        } else {
+            $ruang->update($id, [
+                'namaruang' => $this->request->getVar('namaruang'),
+                'kapasitas' => $this->request->getVar('kapasitas'),
+                'fasilitas' => $this->request->getVar('fasilitas')
+                // 'gambar' => $this->request->getVar('gambar')
+            ]);
+
+            $data['room'] = $ruang->findAll();
+            // return view('admin/room-management', $data);
+            return redirect()->route('admin/room-management');
         }
     }
 }

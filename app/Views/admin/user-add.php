@@ -12,6 +12,13 @@
         <div class="col-md-4">
             <div class="card b-orange">
                 <div class="card-body">
+                <?php if(!empty(session()->getFlashdata('msg'))) : ?>
+
+                    <div class="alert alert-success">
+                        <?php echo session()->getFlashdata('msg');?>
+                    </div>
+                        
+                <?php endif ?>
                     <div class="row g-3">
                         <div class="col-auto">
                             <label for="namalengkap" class="">Nama Lengkap</label>

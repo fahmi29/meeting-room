@@ -35,7 +35,7 @@ class Database extends Config
         'hostname' => 'localhost',
         'username' => 'root',
         'password' => '',
-        'database' => 'meeting-room',
+        'database' => 'meeting_room',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
