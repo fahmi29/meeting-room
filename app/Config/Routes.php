@@ -48,6 +48,7 @@ $routes->get('/logout', 'Login::logout');
     $routes->add('/admin/store', 'Admin::createuser');
     $routes->get('/admin/room-management', 'Admin::room');
     $routes->get('/admin/add-room', 'Admin::roomadd');
+    $routes->add('/admin/create-room', 'Admin::addroom');
     $routes->get('/admin/edit-room/(:segment)', 'Admin::roomedit/$1');
     $routes->post('/admin/update/(:any)', 'Admin::updateroom/$1');
 // });

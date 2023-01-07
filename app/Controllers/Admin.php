@@ -118,50 +118,85 @@ class Admin extends Controller
 
     public function roomadd()
     {
-        return view('admin/room-add');
+        $data['room'] = '';
+
+        return view('admin/room-add', $data);
     }
+
+    public function addroom()
+    {
+        // dd($this->request->getFile('file'));
+        $rules = [
+            'namaruang' => 'required',
+            'kapasitas' => 'required',
+            'fasilitas' => 'required',
+            // 'gambar' => 'uploaded[file]|max_size[file,1024]|ext_in[file,jpg,jpeg,png],'
+        ];
+
+        if ($this->validate($rules)) {
+            $ruang = new RuangModel();
+            $upload = $this->request->getFile('gambar');
+            // dd($upload->getName());
+            $upload->move(WRITEPATH . '../public/assets/images/');
+            $data = [
+                'namaruang' => $this->request->getVar('namaruang'),
+                'fasilitas' => $this->request->getVar('fasilitas'),
+                'kapasitas' => $this->request->getVar('kapasitas'),
+                'gambar' => $upload->getName(),
+            ];
+            $ruang->insert($data);
+            //flash message
+            session()->setFlashdata('msg', 'Ruangan Berhasil Ditambah');
+            return redirect()->route('admin/room-management');
+        } else {
+            $data['validation'] = $this->validator;
+            return view('admin/room-add', $data);
+        }
+    }
+
 
     public function roomedit($id)
     {
         $ruang = new RuangModel();
 
-        $data = array(
-            'room' => $ruang->find($id)
-        );
+        $data['room'] = $ruang->find($id);
 
-        return view('admin/room-add', $data);
+        // dd($data);
+        return view('admin/room-edit', $data);
     }
 
     public function updateroom($id)
     {
-        // dd($this->request->getVar());
-        helper(['form', 'url']);
-        $ruang = new RuangModel();
-        $data['room'] = $ruang->where('id_ruangan', $id)->first();
+        // dd($id);
+        // helper(['form', 'url']);
         // $validation = Services::validation();
         // $data['ruangan'] = $ruang->findAll();
+        $ruang = new RuangModel();
+        // $data['room'] = $ruang->where('id_ruangan', $id)->first();
 
         $rules = [
             'namaruang' => 'required',
             'kapasitas' => 'required',
             'fasilitas' => 'required',
-            // 'gambar' => 'required'
+            'gambar' => 'required'
         ];
 
         if (!$this->validate($rules)) {
-            $data['validation'] = $this->validator;
-            return view('admin/room-add', $data);
-        } else {
             $ruang->update($id, [
                 'namaruang' => $this->request->getVar('namaruang'),
                 'kapasitas' => $this->request->getVar('kapasitas'),
                 'fasilitas' => $this->request->getVar('fasilitas')
                 // 'gambar' => $this->request->getVar('gambar')
             ]);
-
+            
             $data['room'] = $ruang->findAll();
             // return view('admin/room-management', $data);
+            //flash message
+            session()->setFlashdata('msg', 'Ruangan Berhasil Diupdate');
             return redirect()->route('admin/room-management');
+        } else {
+            $data['validation'] = $this->validator;
+            return view('admin/room-add', $data);
         }
     }
 }

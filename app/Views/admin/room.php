@@ -5,6 +5,17 @@
     <div class="col-md-12">
         <div class="card b-orange mb-4 ml-6 radius">
             <div class="card-body">
+                <?php
+                if (session()->getFlashData('msg')) {
+                ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?= session()->getFlashData('msg') ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                <?php
+                }
+                ?>
                 <div class="card bg-white p-4 radius">
                     <form class="row g-3">
                         <div class="col-auto">

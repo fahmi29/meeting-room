@@ -9,6 +9,6 @@ class RuangModel extends Model
     protected $table = 'ruangan';
     protected $primaryKey = 'id_ruangan';
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['namaruang', 'kapasitas', 'fasilitas'];
+    protected $allowedFields = ['namaruang', 'kapasitas', 'fasilitas', 'gambar'];
     protected $useTimestamps = true;
 }
