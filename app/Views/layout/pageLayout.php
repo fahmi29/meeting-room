@@ -55,11 +55,11 @@
 
   <script src="<?= base_url('js/jquery.min.js') ?>"></script>
   <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <script src="<?= base_url('js/jquery.dataTables.min.js') ?>"></script>
   <script src="<?= base_url('js/bootstrap.bundle.min.js') ?>"></script>
   <script src="<?= base_url('js/dataTables.bootstrap.min.js') ?>"></script>
   <script src="<?= base_url('js/dataTables.fixedHeader.min.js') ?>"></script>
   <script src="<?= base_url('js/dataTables.responsive.min.js') ?>"></script>
-  <script src="<?= base_url('js/jquery.dataTables.min.js') ?>"></script>
   <script src="<?= base_url('js/responsive.bootstrap.min.js') ?>"></script>
   <?= $this->renderSection('javascript'); ?>
 </body>
