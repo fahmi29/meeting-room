@@ -2,7 +2,7 @@
 
 <?= $this->section('content') ?>
 <div class="row ml-12 mt-4">
-    <form class="row align-items-start" method="post" action="/admin/update/<?= $room['id_ruangan'] ?>">
+    <form class="row align-items-start" method="post" action="/admin/update/<?= $room['id_ruangan'] ?>" enctype="multipart/form-data">
         <?= csrf_field(); ?>
         <div class="col-md-4">
             <div class="card b-orange">
@@ -22,6 +22,7 @@
                         </div>
                         <div class="col-auto mb-3">
                             <label for="gambar" class="">Gambar</label>
+                            <img src="<?=base_url('assets/images/'.$room['gambar']);?>" width="200" height="200">
                             <input type="file" class="form-control" id="gambar" name="gambar" placeholder="" />
                         </div>
                     </div>
