@@ -41,9 +41,8 @@ class Admin extends Controller
     {
         $divisi = new DivisiModel();
         $jabatan = new JabatanModel();
-        $id = [1];
-        $data['divisi'] = $divisi->whereNotIn('id_divisi', $id)->findAll();
-        $data['jabatan'] = $jabatan->whereNotIn('id_jabatan', $id)->findAll();
+        $data['divisi'] = $divisi->findAll();
+        $data['jabatan'] = $jabatan->findAll();
         // dd($data['divisi']);
         echo view('admin/user-add', $data);
     }
@@ -100,9 +99,8 @@ class Admin extends Controller
             $data['validation'] = $this->validator;
             $divisi = new DivisiModel();
             $jabatan = new JabatanModel();
-            $id = [1];
-            $data['divisi'] = $divisi->whereNotIn('id_divisi', $id)->findAll();
-            $data['jabatan'] = $jabatan->whereNotIn('id_jabatan', $id)->findAll();
+            $data['divisi'] = $divisi->findAll();
+            $data['jabatan'] = $jabatan->findAll();
             // session()->setFlashdata('msg', 'User Berhasil Disimpan');
             return view('admin/user-add', $data);
         }
