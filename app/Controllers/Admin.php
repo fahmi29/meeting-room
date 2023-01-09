@@ -47,19 +47,25 @@ class Admin extends Controller
         echo view('admin/user-add', $data);
     }
 
+    public function useredit($id)
+    {
+        // dd($id);
+        $user = new UserModel();
+        $divisi = new DivisiModel();
+        $jabatan = new JabatanModel();
+        $data['users'] = $user->find($id);
+        $data['divisi'] = $divisi->findAll();
+        $data['jabatan'] = $jabatan->findAll();
+
+        // dd($data);
+        echo view('admin/user-edit', $data);
+    }
+
     public function createuser()
     {
         // dd($this->request->getVar());
-        // helper(['form', 'url']);
-        // validasi data user
         $validation = Services::validation();
         // rule validation ya mirip" di laravel lah
-        // $validation->setRules(['namalengkap' => 'required']);
-        // $validation->setRules(['email' => 'required']);
-        // $validation->setRules(['username' => 'required']);
-        // $validation->setRules(['password' => 'required']);
-        // $validation->setRules(['jabatan' => 'required']);
-        // $validation->setRules(['divisi' => 'required']);
         $rules = [
             'namalengkap' => 'required',
             'email' => 'required|valid_email',
@@ -68,8 +74,6 @@ class Admin extends Controller
             'jabatan' => 'required',
             'divisi' => 'required'
         ];
-        // $isvalidate = $validation->withRequest($this->request)->run();
-
         // jika validasi return true / validasi benar / validasi lolos dll
         if ($this->validate($rules)) {
             $user = new UserModel();
@@ -84,7 +88,6 @@ class Admin extends Controller
                 'divisi' => $divisi,
                 'role' => 'user'
             ];
-            // dd($data);
             $user->insert($data);
             $user = new UserModel();
             $datas['users'] = $user->findAll();
@@ -92,20 +95,60 @@ class Admin extends Controller
             //flash message
             session()->setFlashdata('msg', 'User Berhasil Disimpan');
             return view('admin/user', $datas);
-            // return view('admin/user-add', [
-            //     'validation' => $this->validator
-            // ]);
         } else {
             $data['validation'] = $this->validator;
             $divisi = new DivisiModel();
             $jabatan = new JabatanModel();
             $data['divisi'] = $divisi->findAll();
             $data['jabatan'] = $jabatan->findAll();
-            // session()->setFlashdata('msg', 'User Berhasil Disimpan');
             return view('admin/user-add', $data);
         }
-        // }
-        // $this->request->getVar();
+    }
+
+    public function updateuser($id)
+    {
+        // dd($this->request->getVar());
+        $validation = Services::validation();
+        // rule validation ya mirip" di laravel lah
+        $rules = [
+            'namalengkap' => 'required',
+            'email' => 'required|valid_email',
+            'username' => 'required',
+            'password' => 'required',
+            'jabatan' => 'required',
+            'divisi' => 'required'
+        ];
+        // jika validasi return true / validasi benar / validasi lolos dll
+        if ($this->validate($rules)) {
+            $user = new UserModel();
+            $jabatan = (int)$this->request->getVar('jabatan');
+            $divisi = (int)$this->request->getVar('divisi');
+            $data = [
+                'namalengkap' => $this->request->getVar('namalengkap'),
+                'email' => $this->request->getVar('email'),
+                'username' => $this->request->getVar('username'),
+                'password' => $this->request->getVar('password'),
+                'jabatan' => $jabatan,
+                'divisi' => $divisi,
+                'role' => 'user'
+            ];
+            $user->update($id, $data);
+            $user = new UserModel();
+            $datas['users'] = $user->findAll();
+            $datas['validation'] = $this->validator;
+            //flash message
+            session()->setFlashdata('msg', 'User Berhasil Diupdate');
+            return view('admin/user', $datas);
+        } else {
+            $data['validation'] = $this->validator;
+            $user = new UserModel();
+            $divisi = new DivisiModel();
+            $jabatan = new JabatanModel();
+            $data['users'] = $user->find($id);
+            $data['divisi'] = $divisi->findAll();
+            $data['jabatan'] = $jabatan->findAll();
+            return view('admin/user-edit', $data);
+        }
     }
 
     public function room()
@@ -182,13 +225,16 @@ class Admin extends Controller
         ];
 
         if (!$this->validate($rules)) {
+            $upload = $this->request->getFile('gambar');
+            // dd($upload->getName());
+            $upload->move(WRITEPATH . '../public/assets/images/');
             $ruang->update($id, [
                 'namaruang' => $this->request->getVar('namaruang'),
                 'kapasitas' => $this->request->getVar('kapasitas'),
-                'fasilitas' => $this->request->getVar('fasilitas')
-                // 'gambar' => $this->request->getVar('gambar')
+                'fasilitas' => $this->request->getVar('fasilitas'),
+                'gambar' => $upload->getName()
             ]);
-            
+
             $data['room'] = $ruang->findAll();
             // return view('admin/room-management', $data);
             //flash message

@@ -1,5 +1,11 @@
 # CodeIgniter 4 Application Starter
 
+##  Untuk create migrate
+> ```php spark migrate:create namafile```
+
+## Untuk melakukan migrate
+>```php spark migrate ```
+
 ## Layouting pada repository ini
 > ```  untuk mengubah layout di simpan pada folder layout jadi jangan lupa extends file layout pada page yang akan di tambahkan dan apabila ingin menambah script css atau javascript tambahkan pada file yang terdapat di dalam folder layout ```
 

@@ -46,7 +46,7 @@
                         <tbody>
                             <?php foreach ($room as $key => $ruang) : ?>
                                 <tr>
-                                    <td><?= $key ?></td>
+                                    <td><?= $key+=1 ?></td>
                                     <td><?= $ruang['namaruang'] ?></td>
                                     <td><?= $ruang['kapasitas'] ?></td>
                                     <td><?= $ruang['fasilitas'] ?></td>
